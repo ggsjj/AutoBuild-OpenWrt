@@ -96,3 +96,15 @@ jobs:
       with:
         name: OpenWrt
         path: openwrt/bin
+
+    - name: Assemble artifact
+      run: |
+          rm -rf ./artifact/
+          mkdir -p ./artifact/
+          find ./bin/targets/ -name "*ext4-factory*img*" | xargs -i mv -f {} ./artifact/
+          
+    - name: Upload artifact
+      uses: actions/upload-artifact@master
+      with:
+         name: OpenWrt pi3
+         path: ./artifact/

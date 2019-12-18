@@ -102,9 +102,9 @@ jobs:
         rm -rf ./artifact/
         mkdir -p ./artifact/
         find ./bin/targets/ -name "*ext4-factory*img*" | xargs -i mv -f {} ./artifact/
-          
-    - name: Upload artifact
+
+    - name: Upload artifact1
       uses: actions/upload-artifact@master
       with:
-        name: OpenWrt pi3
+        name: OpenWrt pi3B
         path: ./artifact/

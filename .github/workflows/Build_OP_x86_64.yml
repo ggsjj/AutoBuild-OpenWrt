@@ -96,3 +96,15 @@ jobs:
       with:
         name: OpenWrt
         path: openwrt/bin
+
+    - name: Assemble artifact
+      run: |
+       rm -rf ./artifact/
+       mkdir -p ./artifact/
+       find ./openwrt/bin/ -name "*combined*vmdk*" | xargs -i mv -f {} ./artifact/
+
+    - name: Upload artifact1
+      uses: actions/upload-artifact@master
+      with:
+        name: OpenWrt vmdk
+        path: ./artifact/
